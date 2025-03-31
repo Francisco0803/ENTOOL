@@ -139,8 +139,8 @@ console.log("翻译扩展内容脚本开始加载...");
     // 默认翻译API
     let translationAPI = 'google';
     // 有道API密钥（预配置）
-    let youdaoAppKey = '1335e8b48d7ec6a9';
-    let youdaoAppSecret = 'kWvJTMszgiv35O6Z0zYWysDZoiVrH9Wg';
+    let youdaoAppKey = '换上自己的API';
+    let youdaoAppSecret = '换上自己的API';
     // 超时计时器
     let translationTimeout = null;
     // 超时时间（毫秒）

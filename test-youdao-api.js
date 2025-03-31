@@ -1,6 +1,6 @@
 // 有道API测试脚本
-const youdaoAppKey = '1335e8b48d7ec6a9';
-const youdaoAppSecret = '20010803';
+const youdaoAppKey = '换上自己的API';
+const youdaoAppSecret = '换上自己的API';
 
 // 计算有道API签名
 function calculateYoudaoSign(text, salt, curtime) {

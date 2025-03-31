@@ -7,9 +7,10 @@ chrome.runtime.onInstalled.addListener(() => {
   });
 });
 
-// 有道API密钥（预配置）
-let youdaoAppKey = '1335e8b48d7ec6a9';
-let youdaoAppSecret = 'kWvJTMszgiv35O6Z0zYWysDZoiVrH9Wg';
+// 默认翻译设置
+let translationAPI = 'google'; // 默认使用谷歌翻译
+let youdaoAppKey = '换上自己的API';
+let youdaoAppSecret = '换上自己的API';
 
 // 从存储中加载设置
 chrome.storage.sync.get(['translationAPI', 'youdaoAppKey', 'youdaoAppSecret'], function(result) {
