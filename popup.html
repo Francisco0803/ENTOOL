@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>雨神无敌翻译1.0</title>
+  <style>
+    body {
+      width: 350px;
+      padding: 15px;
+      font-family: Arial, sans-serif;
+    }
+    
+    h1 {
+      font-size: 18px;
+      margin-top: 0;
+      text-align: center;
+      color: #333;
+    }
+    
+    .instructions {
+      margin-bottom: 15px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    
+    .instructions li {
+      margin-bottom: 8px;
+    }
+    
+    .divider {
+      border-bottom: 1px solid #e0e0e0;
+      margin: 15px 0;
+    }
+    
+    .footer {
+      font-size: 12px;
+      color: #888;
+      text-align: center;
+      margin-top: 15px;
+    }
+    
+    .settings {
+      margin-top: 15px;
+    }
+    
+    .settings-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    .api-selection {
+      margin-bottom: 15px;
+    }
+    
+    .api-option {
+      margin-bottom: 5px;
+    }
+    
+    .api-option label {
+      display: inline-block;
+      margin-left: 5px;
+    }
+    
+    .youdao-settings {
+      margin-top: 15px;
+      padding: 10px;
+      background-color: #f5f5f5;
+      border-radius: 4px;
+      display: none;
+    }
+    
+    .youdao-settings.active {
+      display: block;
+    }
+    
+    .youdao-settings .form-group {
+      margin-bottom: 10px;
+    }
+    
+    .youdao-settings label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      font-size: 13px;
+    }
+    
+    .youdao-settings input {
+      width: 100%;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    
+    .youdao-settings .help-text {
+      font-size: 11px;
+      color: #666;
+      margin-top: 3px;
+    }
+    
+    .save-button {
+      background-color: #4285f4;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    
+    .save-button:hover {
+      background-color: #3367d6;
+    }
+    
+    .save-status {
+      font-size: 12px;
+      margin-top: 5px;
+      color: green;
+      display: none;
+    }
+    
+    .tabs {
+      display: flex;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #ddd;
+    }
+    
+    .tab {
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    
+    .tab.active {
+      border-bottom: 2px solid #4285f4;
+      color: #4285f4;
+      font-weight: bold;
+    }
+    
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    .api-configured {
+      background-color: #e6f7ff;
+      border: 1px solid #b3e0ff;
+      border-radius: 4px;
+      padding: 10px;
+      margin-top: 10px;
+      color: #0066cc;
+    }
+  </style>
+</head>
+<body>
+  <h1>雨神无敌翻译1.0</h1>
+  
+  <div class="tabs">
+    <div class="tab active" data-tab="instructions">使用说明</div>
+    <div class="tab" data-tab="settings">设置</div>
+  </div>
+  
+  <div class="tab-content active" id="instructions-tab">
+    <div class="instructions">
+      <b>使用方法：</b>
+      <ol>
+        <li>使用鼠标选择任意文本</li>
+        <li>选择完成后，会自动显示中文翻译</li>
+        <li>也可以右键选择"雨神无敌翻译"</li>
+      </ol>
+      <div class="api-configured">
+        <b>✓ 已预配置：</b> 有道翻译API已预先配置好，可以直接使用，无需手动设置API密钥！
+      </div>
+    </div>
+  </div>
+  
+  <div class="tab-content" id="settings-tab">
+    <div class="settings">
+      <div class="settings-title">翻译API设置</div>
+      
+      <div class="api-selection">
+        <div class="api-option">
+          <input type="radio" id="google-api" name="translation-api" value="google">
+          <label for="google-api">使用谷歌翻译API（免费）</label>
+        </div>
+        <div class="api-option">
+          <input type="radio" id="youdao-api" name="translation-api" value="youdao" checked>
+          <label for="youdao-api">使用有道翻译API（已预配置）</label>
+        </div>
+      </div>
+      
+      <div class="api-configured">
+        有道翻译API密钥已预先配置，您可以直接使用。如需更换自己的API密钥，请在下方输入。
+      </div>
+      
+      <div class="youdao-settings" id="youdao-settings">
+        <div class="form-group">
+          <label for="app-key">应用ID (AppKey)</label>
+          <input type="text" id="app-key" placeholder="已预设，如需修改请输入您的应用ID" value="1335e8b48d7ec6a9">
+          <div class="help-text">在有道智云开放平台申请的应用ID</div>
+        </div>
+        
+        <div class="form-group">
+          <label for="app-secret">应用密钥 (AppSecret)</label>
+          <input type="password" id="app-secret" placeholder="已预设，如需修改请输入您的应用密钥" value="20010803">
+          <div class="help-text">在有道智云开放平台申请的应用密钥</div>
+        </div>
+        
+        <div class="help-text" style="margin-top: 10px; color: #0066cc;">
+          <a href="https://ai.youdao.com/" target="_blank">前往有道智云开放平台申请密钥</a>
+        </div>
+      </div>
+      
+      <button class="save-button" id="save-settings">保存设置</button>
+      <div class="save-status" id="save-status">设置已保存！</div>
+    </div>
+  </div>
+  
+  <div class="footer">
+    版本 1.1 | 感谢使用
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html> 
